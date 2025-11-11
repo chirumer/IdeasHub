@@ -1,0 +1,17 @@
+{
+  "name": "EcoTrack - Carbon Footprint Tracker",
+  "author": "admin",
+  "description": "A personal carbon footprint tracking app that automatically calculates your environmental impact from daily activities and provides actionable reduction strategies.",
+  "visibility": [
+    "admin",
+    "hacker"
+  ],
+  "approved": true,
+  "createdAt": "2025-11-11T00:00:00.000Z",
+  "pages": [
+    {
+      "title": "Overview",
+      "filename": "overview.html"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  /* Ocean Theme */
+  .theme-ocean {
+    --background: 200 18% 97%;
+    --foreground: 200 80% 8%;
+    --card: 200 18% 97%;
+    --card-foreground: 200 80% 8%;
+    --popover: 200 18% 97%;
+    --popover-foreground: 200 80% 8%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 200 18% 91%;
+    --secondary-foreground: 200 80% 8%;
+    --muted: 200 18% 91%;
+    --muted-foreground: 200 10% 40%;
+    --accent: 200 18% 91%;
+    --accent-foreground: 200 80% 8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 200 18% 85%;
+    --input: 200 18% 85%;
+    --ring: 199 89% 48%;
+  }
+
+  /* Sunset Theme */
+  .theme-sunset {
+    --background: 30 40% 98%;
+    --foreground: 20 90% 10%;
+    --card: 30 40% 98%;
+    --card-foreground: 20 90% 10%;
+    --popover: 30 40% 98%;
+    --popover-foreground: 20 90% 10%;
+    --primary: 14 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 40% 92%;
+    --secondary-foreground: 20 90% 10%;
+    --muted: 30 40% 92%;
+    --muted-foreground: 20 15% 45%;
+    --accent: 30 40% 92%;
+    --accent-foreground: 20 90% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 40% 86%;
+    --input: 30 40% 86%;
+    --ring: 14 91% 60%;
+  }
+
+  /* Forest Theme */
+  .theme-forest {
+    --background: 140 20% 98%;
+    --foreground: 140 90% 8%;
+    --card: 140 20% 98%;
+    --card-foreground: 140 90% 8%;
+    --popover: 140 20% 98%;
+    --popover-foreground: 140 90% 8%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 140 20% 92%;
+    --secondary-foreground: 140 90% 8%;
+    --muted: 140 20% 92%;
+    --muted-foreground: 140 10% 40%;
+    --accent: 140 20% 92%;
+    --accent-foreground: 140 90% 8%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 140 20% 86%;
+    --input: 140 20% 86%;
+    --ring: 142 76% 36%;
+  }
+
+  /* Purple Haze Theme */
+  .theme-purple {
+    --background: 270 30% 98%;
+    --foreground: 270 90% 10%;
+    --card: 270 30% 98%;
+    --card-foreground: 270 90% 10%;
+    --popover: 270 30% 98%;
+    --popover-foreground: 270 90% 10%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 30% 92%;
+    --secondary-foreground: 270 90% 10%;
+    --muted: 270 30% 92%;
+    --muted-foreground: 270 10% 45%;
+    --accent: 270 30% 92%;
+    --accent-foreground: 270 90% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 30% 86%;
+    --input: 270 30% 86%;
+    --ring: 262 83% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Prose styles for idea content */
+.prose {
+  max-width: 65ch;
+  color: var(--tw-prose-body);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.prose h1 {
+  font-size: 2.25em;
+  font-weight: 800;
+  line-height: 1.1111111;
+  margin-top: 0;
+  margin-bottom: 0.8888889em;
+  color: hsl(var(--foreground));
+}
+
+.prose h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 1.3333333;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  color: hsl(var(--foreground));
+}
+
+.prose h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  color: hsl(var(--foreground));
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  color: hsl(var(--foreground));
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.625em;
+}
+
+.prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose ul > li {
+  position: relative;
+  padding-left: 0.375em;
+}
+
+.prose ul > li::marker {
+  color: hsl(var(--primary));
+}
+
+.prose ol > li::marker {
+  color: hsl(var(--muted-foreground));
+}
+
+.prose strong {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.prose code {
+  background: hsl(var(--muted));
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-weight: 600;
+}
+
+.prose pre {
+  background: hsl(var(--muted));
+  padding: 1em;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-top: 1.7142857em;
+  margin-bottom: 1.7142857em;
+}
+
+/* Dark mode prose styles */
+.dark .prose {
+  color: hsl(var(--foreground));
+}
+
+/* Improve card hover effects */
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button, a {
+  transition-property: all;
+}
