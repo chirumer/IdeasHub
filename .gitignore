@@ -30,3 +30,6 @@ test-results/
 .env
 backend/.env
 frontend/.env
+
+# Project ideas
+backend/project_ideas/
