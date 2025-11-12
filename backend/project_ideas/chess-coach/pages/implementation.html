@@ -1,0 +1,95 @@
+<h1>Technical Implementation</h1>
+
+<h2>Puzzle Generation System</h2>
+
+<h3>Data Source</h3>
+<p>To demonstrate our idea we pull the user's chess games from <a href="https://lichess.org/api">lichess API</a> (which is a popular chess website that open sources all chess games played in it).</p>
+
+<p>The lichess API provides access to all games played on the platform, allowing us to fetch a user's game history programmatically.</p>
+
+<h3>Puzzle Extraction Algorithm</h3>
+<p>Chess puzzles can be automatically curated from real games (as described in <a href="https://lichess.org/blog">lichess blog posts on puzzle generation</a>).</p>
+
+<p>The puzzle generation can be simulated using a simple algorithm that involves the input of a chess engine (which is an open source chess engine that can be run locally).</p>
+
+<p>We run the user's games through a simple algorithm to identify positions in the games that meet the conditions of being a chess puzzle:</p>
+
+<ul>
+  <li><strong>Position Analysis:</strong> Use chess engine (e.g., Stockfish) to evaluate positions</li>
+  <li><strong>Puzzle Criteria:</strong> Identify positions where there's a clear best move that significantly improves the position</li>
+  <li><strong>Difficulty Assessment:</strong> Calculate puzzle difficulty based on move depth and evaluation changes</li>
+  <li><strong>Context Extraction:</strong> Capture the game context (opening, middlegame, endgame) for each puzzle</li>
+</ul>
+
+<h2>Feedback Generation System</h2>
+
+<h3>LLM-Based Explanations</h3>
+<p>Feedback generation is simple. LLMs, although not able to calculate the best move in a position, are capable of giving an explanation when given the chess position and the best move for the chess position (demonstration).</p>
+
+<p>The FEN notation of the chess puzzle, the user's chosen move, and the best move can be fed into the LLM to generate an explanation of why the user's move is or is not (or is) the best response to the puzzle.</p>
+
+<h3>Feedback Components</h3>
+<ul>
+  <li><strong>Move Evaluation:</strong> Compare user's move with the best move</li>
+  <li><strong>Positional Analysis:</strong> Explain the strategic implications</li>
+  <li><strong>Tactical Patterns:</strong> Identify tactical motifs (forks, pins, skewers, etc.)</li>
+  <li><strong>Alternative Moves:</strong> Discuss other reasonable moves and why they're inferior</li>
+  <li><strong>Learning Points:</strong> Extract key lessons from the position</li>
+</ul>
+
+<h2>Implementation Stages</h2>
+<p>The idea can be implemented in stages (as many stages as there is time may be implemented):</p>
+
+<ol>
+  <li><strong>Stage 1: Single move chess puzzle generation</strong>
+    <ul>
+      <li>Basic puzzle extraction from games</li>
+      <li>Simple move evaluation and feedback</li>
+    </ul>
+  </li>
+  <li><strong>Stage 2: Ability to tweak difficulty of chess puzzle</strong>
+    <ul>
+      <li>Difficulty rating system</li>
+      <li>Filter puzzles by difficulty level</li>
+    </ul>
+  </li>
+  <li><strong>Stage 3: Multiple move chess puzzle generation</strong>
+    <ul>
+      <li>Multi-move combinations</li>
+      <li>Sequence puzzles (mate in 2, mate in 3, etc.)</li>
+    </ul>
+  </li>
+  <li><strong>Stage 4: Ability for user to try multiple moves and compare with best sequence of moves in a particular chess puzzle position</strong>
+    <ul>
+      <li>Interactive puzzle solving</li>
+      <li>Move comparison and analysis</li>
+    </ul>
+  </li>
+  <li><strong>Stage 5: Ability to ask coach questions about a position</strong>
+    <ul>
+      <li>Interactive Q&A with AI coach</li>
+      <li>Context-aware explanations</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Technical Stack</h2>
+<ul>
+  <li><strong>Chess Engine:</strong> Stockfish (open source, runs locally)</li>
+  <li><strong>API Integration:</strong> Lichess API for game data</li>
+  <li><strong>LLM:</strong> GPT-4 or Claude for move explanations</li>
+  <li><strong>Chess Library:</strong> chess.js or python-chess for position handling</li>
+  <li><strong>Frontend:</strong> Chrome Extension (HTML/CSS/JavaScript) or web app</li>
+  <li><strong>Backend:</strong> Node.js or Python for puzzle generation pipeline</li>
+</ul>
+
+<h2>Chrome Extension Architecture</h2>
+<p>The implementation can be delivered as a Chrome extension that:</p>
+<ul>
+  <li>Integrates with lichess.org (or other chess platforms)</li>
+  <li>Automatically analyzes games after they're played</li>
+  <li>Presents puzzles in an overlay or popup interface</li>
+  <li>Provides immediate feedback after puzzle attempts</li>
+  <li>Tracks progress and puzzle completion</li>
+</ul>
+
