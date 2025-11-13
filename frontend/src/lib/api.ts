@@ -70,8 +70,10 @@ export const ideasAPI = {
     return response.json();
   },
 
-  generate: async (description: string, file?: File): Promise<{ message: string; idea: HackathonIdea; requiresApproval: boolean }> => {
+  generate: async (description: string, ideaType: string, file?: File): Promise<{ message: string; idea: HackathonIdea; requiresApproval: boolean }> => {
     const formData = new FormData();
+    
+    formData.append('ideaType', ideaType);
     
     if (file) {
       formData.append('file', file);

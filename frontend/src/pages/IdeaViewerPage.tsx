@@ -148,6 +148,7 @@ export const IdeaViewerPage: React.FC = () => {
                 <Calendar className="h-4 w-4" />
                 <span>{new Date(idea.createdAt).toLocaleDateString()}</span>
               </div>
+              <Badge variant="secondary">{idea.ideaType}</Badge>
               {!idea.approved && (
                 <Badge variant="secondary">Pending Approval</Badge>
               )}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🚀 Starting Hackathon Ideas Hub..."
+echo "🚀 Starting Ideas Hub..."
 echo ""
 
 # Start backend

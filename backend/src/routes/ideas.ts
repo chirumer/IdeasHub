@@ -86,6 +86,7 @@ async function loadIdeas(): Promise<HackathonIdea[]> {
           author: metadata.author,
           description: metadata.description || '',
           visibility: metadata.visibility || 'public',
+          ideaType: metadata.ideaType || 'Hackathon idea',
           approved: metadata.approved !== undefined ? metadata.approved : true,
           createdAt: metadata.createdAt || new Date().toISOString(),
           pages
@@ -115,6 +116,7 @@ async function saveIdea(idea: HackathonIdea) {
     author: idea.author,
     description: idea.description,
     visibility: idea.visibility,
+    ideaType: idea.ideaType,
     approved: idea.approved,
     createdAt: idea.createdAt,
     pages: idea.pages.map(p => ({ title: p.title, filename: p.filename }))
@@ -165,7 +167,7 @@ function canViewIdea(idea: HackathonIdea, username: string | undefined, role: st
 // Get context file for upload modal
 router.get('/context-file', async (req, res) => {
   try {
-    const contextPath = path.join(__dirname, '../../hackathon-ideas-context.md');
+    const contextPath = path.join(__dirname, '../../ideas-context.md');
     res.sendFile(contextPath);
   } catch (error: any) {
     res.status(500).json({ error: 'Failed to load context file', message: error.message });
@@ -236,13 +238,19 @@ router.post('/upload', requireAuth, upload.single('zip'), async (req, res) => {
     const metadataContent = await metadataFile.async('string');
     const metadata = JSON.parse(metadataContent);
     
-    if (!metadata.name || !metadata.author || !metadata.description || !metadata.visibility || !metadata.pages || !Array.isArray(metadata.pages)) {
-      return res.status(400).json({ error: 'Invalid metadata.json format. Required fields: name, author, description, visibility, pages (array with title and filename)' });
+    if (!metadata.name || !metadata.author || !metadata.description || !metadata.visibility || !metadata.ideaType || !metadata.pages || !Array.isArray(metadata.pages)) {
+      return res.status(400).json({ error: 'Invalid metadata.json format. Required fields: name, author, description, visibility, ideaType, pages (array with title and filename)' });
     }
     
     // Validate visibility
     if (metadata.visibility !== 'public' && metadata.visibility !== 'private' && !Array.isArray(metadata.visibility)) {
       return res.status(400).json({ error: 'visibility must be "public", "private", or an array of usernames' });
+    }
+    
+    // Validate ideaType
+    const validIdeaTypes = ['Hackathon idea', 'Project idea', 'Resume project idea'];
+    if (!validIdeaTypes.includes(metadata.ideaType)) {
+      return res.status(400).json({ error: 'ideaType must be one of: "Hackathon idea", "Project idea", "Resume project idea"' });
     }
     
     // Validate pages array
@@ -287,6 +295,7 @@ router.post('/upload', requireAuth, upload.single('zip'), async (req, res) => {
       author: user.username,
       description: metadata.description,
       visibility: metadata.visibility,
+      ideaType: metadata.ideaType,
       approved: user.role === 'admin' || !settings.requireAdminApproval,
       createdAt: new Date().toISOString(),
       pages
@@ -314,6 +323,7 @@ router.post('/generate', requireAuth, upload.single('file'), async (req, res) =>
     
     // Get description from either text or uploaded file
     let description = req.body.description || '';
+    const ideaType = req.body.ideaType || 'Hackathon idea';
     
     if (req.file) {
       // If file uploaded, read its content
@@ -328,8 +338,20 @@ router.post('/generate', requireAuth, upload.single('file'), async (req, res) =>
       return res.status(400).json({ error: 'Description too long (max 5000 characters)' });
     }
     
+    // Validate ideaType
+    const validIdeaTypes = ['Hackathon idea', 'Project idea', 'Resume project idea'];
+    if (!validIdeaTypes.includes(ideaType)) {
+      return res.status(400).json({ error: 'ideaType must be one of: "Hackathon idea", "Project idea", "Resume project idea"' });
+    }
+    
     // Generate idea using OpenAI
-    const prompt = `You are an expert at creating detailed hackathon project ideas. Given the following idea description, generate a complete hackathon project with:
+    const projectTypeContext = ideaType === 'Hackathon idea' 
+      ? 'a hackathon project (time-constrained, innovative, demo-ready)'
+      : ideaType === 'Project idea'
+      ? 'a general software project (comprehensive, production-ready)'
+      : 'a resume-worthy project (showcases skills, portfolio-ready)';
+    
+    const prompt = `You are an expert at creating detailed project ideas. Given the following idea description, generate a complete project for ${projectTypeContext} with:
 
 1. A catchy, professional name
 2. A brief 1-2 sentence description
@@ -369,7 +391,7 @@ IMPORTANT RULES:
       messages: [
         {
           role: "system",
-          content: "You are a hackathon project idea generator. Always respond with valid JSON only, no markdown formatting."
+          content: `You are a project idea generator specializing in ${projectTypeContext}. Always respond with valid JSON only, no markdown formatting.`
         },
         {
           role: "user",
@@ -427,6 +449,7 @@ IMPORTANT RULES:
       author: user.username,
       description: generatedData.description,
       visibility: 'public', // Default to public for AI-generated ideas
+      ideaType: ideaType,
       approved: user.role === 'admin' || !settings.requireAdminApproval,
       createdAt: new Date().toISOString(),
       pages: generatedData.pages.map((p: any) => ({

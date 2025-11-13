@@ -68,7 +68,7 @@ export const Navbar: React.FC = () => {
               <div className="rounded-full bg-primary/10 p-2">
                 <Lightbulb className="h-5 w-5 text-primary" />
               </div>
-              <span className="hidden sm:inline">HackIdeas</span>
+              <span className="hidden sm:inline">IdeasHub</span>
             </button>
 
             {/* Ideas Dropdown */}

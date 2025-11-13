@@ -17,7 +17,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({ open, onOpenChange }) 
     const url = ideasAPI.downloadContextFile()
     const a = document.createElement('a')
     a.href = url
-    a.download = 'hackathon-ideas-context.md'
+    a.download = 'ideas-context.md'
     a.target = '_blank'
     document.body.appendChild(a)
     a.click()
@@ -63,7 +63,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({ open, onOpenChange }) 
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Upload Hackathon Idea</DialogTitle>
+          <DialogTitle>Upload Idea</DialogTitle>
           <DialogDescription>
             Follow the structure guidelines and upload your idea as a zip file
           </DialogDescription>
@@ -76,14 +76,14 @@ export const UploadModal: React.FC<UploadModalProps> = ({ open, onOpenChange }) 
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm">
                 1
               </span>
-              Download Context File (Optional)
+              Download Template File (Optional)
             </h3>
             <p className="text-sm text-muted-foreground">
-              Download the context file to understand the required structure for your hackathon idea.
+              Download the template file to understand the required structure for your idea.
             </p>
             <Button onClick={downloadContext} variant="outline" className="w-full sm:w-auto">
               <Download className="mr-2 h-4 w-4" />
-              Download Context File
+              Download Template File
             </Button>
           </div>
 
@@ -151,7 +151,8 @@ export const UploadModal: React.FC<UploadModalProps> = ({ open, onOpenChange }) 
             <h4 className="font-semibold mb-2">Quick Requirements:</h4>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
               <li>Zip must contain a single root folder</li>
-              <li>metadata.json with name and author</li>
+              <li>metadata.json with name, description, visibility, ideaType, and pages</li>
+              <li>ideaType must be one of: "Hackathon idea", "Project idea", "Resume project idea"</li>
               <li>pages/ folder with .html files</li>
               <li>Each HTML file must have at least one &lt;h1&gt; tag</li>
               <li>HTML files should contain only content (no &lt;html&gt;, &lt;head&gt;, or &lt;body&gt; tags)</li>

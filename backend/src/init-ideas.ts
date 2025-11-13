@@ -14,6 +14,7 @@ const defaultIdeas = [
     author: 'admin',
     description: 'An AI-powered app that transforms lengthy educational videos into bite-sized, engaging reels tailored to personalized learning roadmaps.',
     visibility: 'public' as const,
+    ideaType: 'Hackathon idea' as const,
     approved: true,
     createdAt: '2025-11-11T00:00:00.000Z',
     pages: [

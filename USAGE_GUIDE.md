@@ -1,4 +1,4 @@
-# Hackathon Ideas Hub - Complete Usage Guide
+# Ideas Hub - Complete Usage Guide
 
 ## 🚀 Quick Start
 
@@ -10,7 +10,7 @@ The application is currently running at: **http://localhost:5173**
 - Username: `admin`
 - Password: `chiru`
 
-**Hacker Account** (Standard user):
+**Standard Account** (Typical user):
 - Username: `hacker`
 - Password: `pragmanchiru`
 
@@ -22,7 +22,7 @@ The application is currently running at: **http://localhost:5173**
 - ✅ Clean, modern login page with gradient background
 
 ### 2. Dashboard
-- **View all hackathon ideas** in a beautiful card layout
+- **View all ideas** in a beautiful card layout
 - **Search functionality** - Search by idea name or author
 - **Click any card** to view the full idea
 - **Responsive design** - Works on desktop, tablet, and mobile
@@ -74,7 +74,7 @@ Access by clicking "Admin" in the navbar:
 
 **Application Settings:**
 - Toggle "Require Admin Approval" for new uploads
-- When ON: Hacker-uploaded ideas need admin approval
+- When ON: user-uploaded ideas need admin approval
 - When OFF: Ideas appear immediately after upload
 
 **Manage Ideas:**
@@ -105,7 +105,7 @@ your-idea-name/
 ### metadata.json Format
 ```json
 {
-  "name": "Your Hackathon Idea Name",
+  "name": "Your Idea Name",
   "author": "your-username"
 }
 ```
@@ -132,7 +132,7 @@ The application comes with 3 example ideas:
 
 1. **Educational Reels Generator** (by admin)
    - YouTube content clipping with AI filtering
-   - 2 pages: Hackathon Pitch, Implementation
+   - 2 pages: Pitch, Implementation
 
 2. **Smart Campus Navigator** (by placeholder)
    - AR-powered campus navigation
@@ -231,10 +231,10 @@ The application is fully responsive:
 - **Default Ideas:** 3
 - **Test Coverage:** Automated Selenium tests included
 
-## 🎉 Enjoy Your Hackathon Ideas Hub!
+## 🎉 Enjoy Ideas Hub!
 
 The application is fully functional and ready to use. Feel free to:
-- Add your own hackathon ideas
+- Add your own ideas
 - Customize the themes
 - Invite team members (by sharing credentials)
 - Build upon this foundation for your own projects

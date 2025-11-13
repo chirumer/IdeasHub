@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🛑 Stopping Hackathon Ideas Hub servers..."
+echo "🛑 Stopping Ideas Hub servers..."
 echo ""
 
 # Find and kill backend process (port 3001)

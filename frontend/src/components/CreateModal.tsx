@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Download, Upload as UploadIcon, CheckCircle, AlertCircle, Sparkles, FileText } from 'lucide-react'
 import { ideasAPI } from '@/lib/api'
+import type { IdeaType } from '@/types'
 
 interface CreateModalProps {
   open: boolean
@@ -19,12 +20,13 @@ export const CreateModal: React.FC<CreateModalProps> = ({ open, onOpenChange }) 
   const [uploadStatus, setUploadStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null)
   const [description, setDescription] = useState('')
   const [descriptionFile, setDescriptionFile] = useState<File | null>(null)
+  const [ideaType, setIdeaType] = useState<IdeaType>('Hackathon idea')
 
   const downloadContext = () => {
     const url = ideasAPI.downloadContextFile()
     const a = document.createElement('a')
     a.href = url
-    a.download = 'hackathon-ideas-context.md'
+    a.download = 'ideas-context.md'
     a.target = '_blank'
     document.body.appendChild(a)
     a.click()
@@ -86,7 +88,7 @@ export const CreateModal: React.FC<CreateModalProps> = ({ open, onOpenChange }) 
     setUploadStatus(null)
 
     try {
-      const response = await ideasAPI.generate(description, descriptionFile || undefined)
+      const response = await ideasAPI.generate(description, ideaType, descriptionFile || undefined)
       
       const message = response.requiresApproval 
         ? 'Idea generated successfully! It will appear after admin approval.'
@@ -114,7 +116,7 @@ export const CreateModal: React.FC<CreateModalProps> = ({ open, onOpenChange }) 
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Create Hackathon Idea</DialogTitle>
+          <DialogTitle>Create New Idea</DialogTitle>
           <DialogDescription>
             Generate an idea with AI or upload your own structured project
           </DialogDescription>
@@ -152,15 +154,33 @@ export const CreateModal: React.FC<CreateModalProps> = ({ open, onOpenChange }) 
             <>
               <div className="space-y-4">
                 <div className="space-y-2">
+                  <h3 className="font-semibold">Select Idea Type</h3>
+                  <div className="flex gap-2">
+                    {(['Hackathon idea', 'Project idea', 'Resume project idea'] as IdeaType[]).map((type) => (
+                      <Button
+                        key={type}
+                        type="button"
+                        variant={ideaType === type ? 'default' : 'outline'}
+                        size="sm"
+                        onClick={() => setIdeaType(type)}
+                        disabled={generating}
+                      >
+                        {type}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
                   <h3 className="font-semibold">Describe Your Idea</h3>
                   <p className="text-sm text-muted-foreground">
-                    Describe your hackathon project idea in detail. AI will generate a complete project with multiple pages.
+                    Describe your project idea in detail. AI will generate a complete project with multiple pages.
                   </p>
                   <Textarea
-                    placeholder="Example: A mobile app that uses AI to help students find study partners based on their learning style, schedule, and subjects. Should include features like matching algorithm, chat, study session scheduling..."
+                    placeholder="Example: A mobile app that uses AI to help students find study partners based on their learning style, schedule, and subjects. Include features like matching algorithm, chat, study session scheduling..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    rows={6}
+                    rows={5}
                     disabled={generating || !!descriptionFile}
                     className="resize-none"
                   />
@@ -243,7 +263,7 @@ export const CreateModal: React.FC<CreateModalProps> = ({ open, onOpenChange }) 
                   Download Context File (Optional)
                 </h3>
                 <p className="text-sm text-muted-foreground">
-                  Download the context file to understand the required structure for your hackathon idea.
+                  Download the context file to understand the required structure for your idea.
                 </p>
                 <Button onClick={downloadContext} variant="outline" className="w-full sm:w-auto">
                   <Download className="mr-2 h-4 w-4" />
@@ -293,7 +313,8 @@ export const CreateModal: React.FC<CreateModalProps> = ({ open, onOpenChange }) 
                 <h4 className="font-semibold mb-2">Quick Requirements:</h4>
                 <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                   <li>Zip must contain a single root folder</li>
-                  <li>metadata.json with name, description, visibility, and pages</li>
+                  <li>metadata.json with name, description, visibility, ideaType, and pages</li>
+                  <li>ideaType must be one of: "Hackathon idea", "Project idea", "Resume project idea"</li>
                   <li>pages/ folder with .html files</li>
                   <li>Each HTML file must have at least one &lt;h1&gt; tag</li>
                   <li>HTML files should contain only content (no &lt;html&gt;, &lt;head&gt;, or &lt;body&gt; tags)</li>

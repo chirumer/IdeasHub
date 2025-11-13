@@ -1,12 +1,12 @@
-# Hackathon Ideas Hub
+# Ideas Hub
 
-A modern, feature-rich web application for managing and exploring hackathon ideas with multiple themes, authentication, and AI chat integration.
+A modern, feature-rich web application for managing and exploring project ideas with multiple themes, authentication, and AI chat integration.
 
 ## Features
 
-- 🔐 **Authentication System**: Two-tier access (Admin/Hacker) with persistent login
+- 🔐 **Authentication System**: Two-tier access (Admin/User) with persistent login
 - 🎨 **Multiple Themes**: Light, Dark, Ocean, Sunset, Forest, and Purple Haze themes
-- 📚 **Project Management**: Browse, search, and view hackathon ideas
+- 📚 **Project Management**: Browse, search, and view curated project ideas
 - 💬 **AI Chat**: Placeholder AI assistant for discussing ideas
 - 📤 **Upload System**: Zip-based project upload with strict validation
 - ⚙️ **Admin Controls**: Delete ideas and manage approval workflows
@@ -62,7 +62,7 @@ npm run preview
 ## Project Structure
 
 ```
-project_ideas/          # Folder for storing hackathon ideas
+project_ideas/          # Folder for storing curated ideas
 src/
 ├── components/         # React components
 │   ├── ui/            # shadcn UI components

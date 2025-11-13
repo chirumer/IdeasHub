@@ -2,10 +2,24 @@ import { HackathonIdea } from '@/types'
 
 const STORAGE_KEY = 'hackathon-ideas'
 
+// Migrate old ideas without ideaType
+const migrateIdeas = (ideas: any[]): HackathonIdea[] => {
+  return ideas.map(idea => ({
+    ...idea,
+    ideaType: idea.ideaType || 'Hackathon idea'
+  }))
+}
+
 export const getStoredIdeas = (): HackathonIdea[] => {
   const stored = localStorage.getItem(STORAGE_KEY)
   if (stored) {
-    return JSON.parse(stored)
+    const ideas = JSON.parse(stored)
+    const migratedIdeas = migrateIdeas(ideas)
+    // Save migrated version back
+    if (JSON.stringify(ideas) !== JSON.stringify(migratedIdeas)) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(migratedIdeas))
+    }
+    return migratedIdeas
   }
   return getDefaultIdeas()
 }
@@ -43,6 +57,9 @@ const getDefaultIdeas = (): HackathonIdea[] => {
       author: 'admin',
       approved: true,
       createdAt: new Date().toISOString(),
+      ideaType: 'Hackathon idea',
+      visibility: 'public',
+      description: 'An AI-powered app that transforms lengthy educational videos into bite-sized, engaging reels.',
       pages: [
         {
           title: 'Hackathon Pitch',
@@ -156,6 +173,9 @@ const getDefaultIdeas = (): HackathonIdea[] => {
       author: 'placeholder',
       approved: true,
       createdAt: new Date().toISOString(),
+      ideaType: 'Project idea',
+      visibility: 'public',
+      description: 'An AR-powered mobile app for campus navigation.',
       pages: [
         {
           title: 'Overview',
@@ -194,6 +214,9 @@ const getDefaultIdeas = (): HackathonIdea[] => {
       author: 'placeholder',
       approved: true,
       createdAt: new Date().toISOString(),
+      ideaType: 'Resume project idea',
+      visibility: 'public',
+      description: 'Track and reduce your carbon footprint with gamified challenges.',
       pages: [
         {
           title: 'Overview',

@@ -1,8 +1,8 @@
-# Hackathon Ideas Hub - Submission Guide
+# Ideas Hub - Submission Guide
 
 ## Structure Requirements
 
-To add a new hackathon idea to the website, create a folder with the following structure:
+To add a new idea to the website, create a folder with the following structure:
 
 ```
 your-idea-name/
@@ -19,10 +19,11 @@ The `metadata.json` file is the core of your submission. It must include:
 
 ```json
 {
-  "name": "Your Hackathon Idea Name",
+  "name": "Your Project Idea Name",
   "author": "your-username",
   "description": "A brief, compelling description of your idea (1-2 sentences). This will appear on idea cards and search results.",
   "visibility": "public",
+  "ideaType": "Hackathon idea",
   "pages": [
     {
       "title": "Page Title 1",
@@ -38,13 +39,17 @@ The `metadata.json` file is the core of your submission. It must include:
 
 ### Required Fields
 
-- **name** (string): The title of your hackathon idea
+- **name** (string): The title of your project idea
 - **author** (string): Your username (must match your logged-in username)
 - **description** (string): A concise description of your idea (recommended: 100-200 characters)
 - **visibility** (string or array): Controls who can view your idea
   - `"public"`: Everyone can see your idea (recommended)
   - `"private"`: Only you can see your idea
   - `["username1", "username2"]`: Only specified users can see your idea
+- **ideaType** (string): The type of project idea
+  - `"Hackathon idea"`: Time-constrained, innovative, demo-ready projects
+  - `"Project idea"`: Comprehensive, production-ready software projects
+  - `"Resume project idea"`: Portfolio-worthy projects that showcase skills
 - **pages** (array): List of pages in your idea submission
   - Each page must have:
     - **title** (string): The display name for the page
@@ -58,6 +63,7 @@ The `metadata.json` file is the core of your submission. It must include:
   "author": "johndoe",
   "description": "An intelligent study companion that creates personalized learning paths and generates practice questions using GPT-4.",
   "visibility": "public",
+  "ideaType": "Project idea",
   "pages": [
     {
       "title": "Project Overview",
@@ -141,7 +147,7 @@ Only the specified users (by username) can view your idea. Great for team projec
 ## Submission Process
 
 1. **Prepare your content**: Write your idea pages in HTML format
-2. **Create metadata.json**: Fill in all required fields with accurate information
+2. **Create metadata.json**: Fill in all required fields with accurate information, including the ideaType
 3. **Organize files**: Place all HTML files in a `pages/` subfolder
 4. **Zip it up**: Create a zip file containing:
    - `your-idea-name/` (folder)
@@ -160,14 +166,19 @@ Only the specified users (by username) can view your idea. Great for team projec
 ### Content Structure
 - Start with the problem you're solving
 - Explain your solution clearly
-- Include technical details
+- Include technical details appropriate for your ideaType
 - Show results, demos, or mockups if available
 - End with impact or future plans
 
 ### Page Organization
 - **Page 1**: Overview/Pitch (problem, solution, key features)
 - **Page 2**: Technical details (architecture, tech stack, implementation)
-- **Page 3+**: Additional pages for demo, results, team, etc.
+- **Page 3+**: Additional pages for demo, results, roadmap, etc.
+
+### Idea Type Guidelines
+- **Hackathon ideas**: Focus on innovation, feasibility within time constraints, and demo potential
+- **Project ideas**: Emphasize comprehensive features, scalability, and production readiness
+- **Resume project ideas**: Highlight skills demonstrated, technical depth, and portfolio value
 
 ### Formatting Tips
 - Use headings (`<h2>`, `<h3>`) to structure content
@@ -179,7 +190,7 @@ Only the specified users (by username) can view your idea. Great for team projec
 
 ### Approval Process
 - **Admins**: Your ideas are automatically approved
-- **Hackers**: Ideas may require admin approval (depending on site settings)
+- **Users**: Ideas may require admin approval (depending on site settings)
 
 ### Visibility
 - Your idea will be visible according to the visibility setting you chose

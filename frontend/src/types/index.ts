@@ -16,12 +16,15 @@ export interface IdeaPageMetadata {
 
 export type IdeaVisibility = 'public' | 'private' | string[]
 
+export type IdeaType = 'Hackathon idea' | 'Project idea' | 'Resume project idea'
+
 export interface HackathonIdea {
   id: string
   name: string
   author: string
   description: string
   visibility: IdeaVisibility
+  ideaType: IdeaType
   pages: IdeaPage[]
   approved: boolean
   createdAt: string

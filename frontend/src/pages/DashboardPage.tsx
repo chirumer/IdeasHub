@@ -57,9 +57,9 @@ export const DashboardPage: React.FC = () => {
     <div className="container mx-auto py-8 px-4 max-w-7xl">
       <div className="mb-8 space-y-4">
         <div>
-          <h1 className="text-4xl font-bold mb-2">Hackathon Ideas</h1>
+          <h1 className="text-4xl font-bold mb-2">Ideas Hub</h1>
           <p className="text-muted-foreground">
-            Explore innovative project ideas for your next hackathon
+            Explore innovative project ideas for hackathons, portfolios, and more
           </p>
         </div>
         
@@ -111,7 +111,10 @@ export const DashboardPage: React.FC = () => {
                     <Calendar className="h-4 w-4" />
                     <span>{new Date(idea.createdAt).toLocaleDateString()}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <Badge variant="secondary">
+                      {idea.ideaType}
+                    </Badge>
                     <Badge variant="outline">
                       {idea.pages.length} {idea.pages.length === 1 ? 'page' : 'pages'}
                     </Badge>

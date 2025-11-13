@@ -78,7 +78,7 @@ export const AdminSettingsModal: React.FC<AdminSettingsModalProps> = ({ open, on
         <DialogHeader>
           <DialogTitle>Admin Settings</DialogTitle>
           <DialogDescription>
-            Manage application settings and hackathon ideas
+            Manage application settings and community ideas
           </DialogDescription>
         </DialogHeader>
 
@@ -96,7 +96,7 @@ export const AdminSettingsModal: React.FC<AdminSettingsModalProps> = ({ open, on
                 <div className="space-y-0.5">
                   <div className="text-sm font-medium">Require Admin Approval</div>
                   <div className="text-sm text-muted-foreground">
-                    When enabled, hackathon ideas uploaded by hackers will require admin approval before appearing on the dashboard
+                    When enabled, ideas uploaded by standard users will require admin approval before appearing on the dashboard
                   </div>
                 </div>
                 <Switch
@@ -110,7 +110,7 @@ export const AdminSettingsModal: React.FC<AdminSettingsModalProps> = ({ open, on
           {/* Manage Ideas */}
           <Card>
             <CardHeader>
-              <CardTitle>Manage Hackathon Ideas</CardTitle>
+              <CardTitle>Manage Ideas</CardTitle>
               <CardDescription>
                 View all ideas, approve/unapprove, or delete them
               </CardDescription>

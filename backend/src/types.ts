@@ -16,6 +16,8 @@ export interface IdeaPageMetadata {
 
 export type IdeaVisibility = 'public' | 'private' | string[];
 
+export type IdeaType = 'Hackathon idea' | 'Project idea' | 'Resume project idea';
+
 export interface HackathonIdea {
   id: string;
   name: string;
@@ -24,6 +26,7 @@ export interface HackathonIdea {
   approved: boolean;
   createdAt: string;
   visibility: IdeaVisibility;
+  ideaType: IdeaType;
   pages: IdeaPage[];
 }
 

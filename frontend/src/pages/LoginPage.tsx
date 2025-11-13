@@ -42,9 +42,9 @@ export const LoginPage: React.FC = () => {
               <Lightbulb className="h-12 w-12 text-primary" />
             </div>
           </div>
-          <CardTitle className="text-2xl text-center">Hackathon Ideas Hub</CardTitle>
+          <CardTitle className="text-2xl text-center">Ideas Hub</CardTitle>
           <CardDescription className="text-center">
-            Sign in to explore and manage innovative hackathon ideas
+            Sign in to explore and manage innovative project ideas
           </CardDescription>
         </CardHeader>
         <CardContent>

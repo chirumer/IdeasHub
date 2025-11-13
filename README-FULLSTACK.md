@@ -1,4 +1,4 @@
-# Hackathon Ideas Hub - Full Stack Application
+# Ideas Hub - Full Stack Application
 
 ## 🎉 New Architecture: Backend + Frontend
 
@@ -93,7 +93,7 @@ npm run dev
 - Password: `chiru`
 - Access: Full access including admin features
 
-**Hacker Account:**
+**Standard Account:**
 - Username: `hacker`  
 - Password: `pragmanchiru`
 - Access: Standard user (can upload ideas, view approved ideas)
@@ -113,7 +113,7 @@ npm run dev
 - `POST /api/auth/logout` - Logout and destroy session
 - `GET /api/auth/me` - Get current logged-in user
 
-### Hackathon Ideas
+### Ideas
 - `GET /api/ideas` - Get all ideas (filtered by user role)
 - `GET /api/ideas/:id` - Get single idea by ID
 - `POST /api/ideas/upload` - Upload new idea (requires auth)
