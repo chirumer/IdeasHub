@@ -38,7 +38,7 @@ export const Navbar: React.FC = () => {
     }
 
     loadIdeas()
-  }, [])
+  }, [user])
 
   const handleLogout = async () => {
     await logout()
