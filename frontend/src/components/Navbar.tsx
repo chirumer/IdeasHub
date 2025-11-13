@@ -56,12 +56,13 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <nav aria-label="Main navigation" className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-4">
             {/* Logo */}
             <button
               onClick={handleLogoClick}
+              aria-label="Go to dashboard"
               className="flex items-center gap-2 font-bold text-xl hover:opacity-80 transition-opacity"
             >
               <div className="rounded-full bg-primary/10 p-2">
@@ -82,6 +83,7 @@ export const Navbar: React.FC = () => {
                 <div className="p-2">
                   <Input
                     placeholder="Search ideas..."
+                    aria-label="Search ideas"
                     value={ideaSearchQuery}
                     onChange={(e) => setIdeaSearchQuery(e.target.value)}
                     className="h-8"
@@ -144,7 +146,7 @@ export const Navbar: React.FC = () => {
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" aria-label="User menu">
                     {user.username}
                     <ChevronDown className="ml-2 h-4 w-4" />
                   </Button>
